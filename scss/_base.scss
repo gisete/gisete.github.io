@@ -56,11 +56,15 @@ h1 {
 
     .profile-photo {
         order: 1;
-        flex: 1 1 500px;
+        flex: 1 1 70vh;
         background-image: url('/img/hero-background.jpg');
         background-repeat: no-repeat;
         background-size: cover;
         min-width: 100%;
+
+        @include breakpoint(500px) {
+            flex: 1 1 500px;
+        }
 
         @include breakpoint(tablet) {
             min-height: 100vh;
