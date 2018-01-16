@@ -1,0 +1,34 @@
+// MEDIA QUERY BREAKPOINTS
+//--------------------------------------------------------------------------
+$media-desktop-large: 1440px;
+$media-desktop-max: 1200px;
+$media-desktop-min: 1024px;
+$media-tablet-max: calc(#{$media-desktop-min} - 1px);
+$media-tablet-min: 768px;
+$media-mobile-max: calc(#{$media-tablet-min} - 1px);
+
+@mixin breakpoint($point, $minmax: min) {
+    @if $minmax == min {
+        $minmax: min-width;
+    } @else if $minmax == max {
+        $minmax: max-width;
+    } 
+
+    @if $point == desktop-large {
+        @media screen and ($minmax: $media-desktop-large) { @content; }
+    }
+    @if $point == desktop-medium {
+        @media screen and ($minmax: $media-desktop-max) { @content; }
+    }
+    @if $point == desktop {
+        @media screen and ($minmax: $media-desktop-min) { @content; }
+    }
+    @else if $point == tablet {
+        @media screen and ($minmax: $media-tablet-min) { @content; }
+    }
+    @else if $point == mobile {
+        @media screen and (max-width: $media-mobile-max) { @content; }
+    } @else {
+        @media screen and ($minmax: $point) { @content; }
+    }
+}
